@@ -30,8 +30,39 @@ dane_ze_swiata = ''
 db_name = dane_ze_swiata or 'my_db'
 print(db_name)
 
+# Truthy / falsy values...
+"""
+
+"""
+print(bool(10))  # True
+print(bool(-1))  # True
+print(bool(0))  # True
+print(bool('Ala ma kota'))  # True
+print(bool(' '))  # True
+print(bool(''))  # False
+print(bool([]))  # False
+print(bool(['']))  # True
+print(bool(None))  # False
+
+first_name = 'Piotr'
+
+if first_name == 'Piotr':
+    print('Czesc Piotr!')
+elif first_name == 'Ala':
+    print('Czesc Ala')
+else:
+    print('buuu')
 
 
 
+first_name = 'Piotr'
 
+bonus = None
+if first_name == 'Piotr':
+    bonus = 10
+else:
+    bonus = 0
 
+# WARTOŚĆ_WYRAŻENIA_JAK_TRUE if WARUNEK else WARTOŚĆ_WYRAŻENIA_JAK_FALSE
+bonus = 10 if first_name == 'Piotr' else 0
+print(bonus)
