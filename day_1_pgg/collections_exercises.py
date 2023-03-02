@@ -36,5 +36,7 @@ param_types = set()
 for product in products:
     for param_pair in product['description'].split(','):
         param_types.add(param_pair.split(':')[0])
+        if product['product_id'] == 200:
+            raise ValueError()
 
 pprint(param_types)
