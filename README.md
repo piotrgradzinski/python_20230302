@@ -11,7 +11,7 @@
 - pakiety / moduły: dobre praktyki, pliki __init__
 
 ### Dzień 2
-- OOP: architektura obiektowa w aplikacji; dziedziczenie, przykrywanie metod, klasy abstrakcyjne, atrybuty obiektu, właściwości, atrybuty klasowe, metody, metody specjalne, metody klasowe, metody statyczne
+- OOP: architektura obiektowa w aplikacji, dziedziczenie, przykrywanie metod, klasy abstrakcyjne, atrybuty obiektu, właściwości, atrybuty klasowe, metody, metody specjalne, metody klasowe, metody statyczne
 
 ### Dzień 3
 - wyjątki: podnoszenie wyjątków, obsługa z uwzględnieniem dziedziczenia, tworzenie własnych wyjątków
