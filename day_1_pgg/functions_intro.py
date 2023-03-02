@@ -1,8 +1,9 @@
-# functions intro
+"""
+Functions intro
 
+https://realpython.com/python-type-checking/
 """
-To jest docstring
-"""
+from numbers import Number
 
 # type hinting
 my_number: int = 10
@@ -30,8 +31,15 @@ ta zmienna wcześniej została opisana type hint int i dlatego PyCharm podpowiad
 my_number = 10_674_231.123
 print(my_number)
 
+from typing import Union, Optional, List, Tuple, Dict, Iterable, Sequence, Any
 
-def greeting(first_name, last_name, age):
+
+# def greeting(first_name: str, last_name: str,
+#              age: Union[int, float] = 0) -> str:
+# def greeting(first_name: str, last_name: str,
+#              age: Number = 0) -> str:
+def greeting(first_name: str, last_name: str,
+             age: Optional[Number] = None) -> str:
     """Prepare special form of greeting.
 
     Some more information on the topic...
@@ -45,3 +53,32 @@ def greeting(first_name, last_name, age):
 
 
 print(greeting('Piotr', 'GG', 18))
+print(greeting('Piotr', 'GG', 18.5))
+print(greeting('Piotr', 'GG', 1j+3))  # complex, liczba zespolona https://pl.wikipedia.org/wiki/Liczby_zespolone
+# print(greeting('Piotr', 'GG', 'asd'))
+
+names: List[str] = ['Ala', 'Ela', 'Ola']
+numbers: Tuple[int, int, int] = (1, 2, 3)
+options: Dict[str, bool] = {'marketing': True}
+
+"""
+Iterable - wszystkie typy, które implementują interfejs iteratora, czyli takie, po których można iterować forem
+Sequence - typy, w których kolejność elementów jest zachowana - np. list, tuple, dict, ale już set nie.
+"""
+# def square(elements: Iterable[Union[float, int]]) -> List[float]:
+def square(elements: Sequence[Union[float, int]]) -> List[float]:
+    return [x ** 2 for x in elements]
+
+
+print(square([1, 2, 3]))
+print(square((1, 2, 3)))
+print(square({1, 2, 3}))
+
+
+import random
+
+def choose(items: Sequence[Any]) -> Any:
+    return random.choice(items)
+
+
+print(choose([1, 2, 3, 4, 5]))
