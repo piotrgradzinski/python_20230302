@@ -4,6 +4,7 @@ Functions intro
 https://realpython.com/python-type-checking/
 """
 from numbers import Number
+from pprint import pprint
 
 # type hinting
 my_number: int = 10
@@ -82,3 +83,79 @@ def choose(items: Sequence[Any]) -> Any:
 
 
 print(choose([1, 2, 3, 4, 5]))
+
+
+print('-' * 30)
+
+
+def greeting(first_name, last_name, age=0.0):
+    return f"{first_name} {last_name} ({age:.2f})!"
+
+
+# argumenty pozycyjne (positional arguments)
+print(greeting('Piotr', 'GG', 10))
+print(greeting('Piotr', 'GG'))
+
+# argumenty nazwane (key-worded arguments)
+print(greeting(first_name='Piotr', last_name='GG', age=10))
+print(greeting(first_name='Piotr', last_name='GG'))
+print(greeting(last_name='GG', age=1, first_name='Piotr'))
+
+# mieszane
+print(greeting('Piotr', age=1, last_name='GG'))
+# najpierw pozycyjne, później nazwane
+# print(greeting(age=1, 'Piotr', last_name='GG'))
+
+print('-' * 30)
+
+def zliczacz(*args, **kwargs):
+    pprint(args)
+    pprint(kwargs)
+
+
+zliczacz()
+zliczacz(1, 2, 3)
+zliczacz('a', 'b', 1, 2, 3)
+zliczacz(1, 2, a=10, b=20, c=30)
+
+print('-' * 30)
+
+
+def srednia(*args):
+    return sum(args) / len(args)
+
+
+print(srednia(5, 6, 7))
+
+
+print('-' * 30)
+
+
+def my_fun(param, data=[1, 2, 3]):
+    data.append(param)
+    return data
+
+print(my_fun(10))  # [1, 2, 3, 10]
+print(my_fun(20))  # [1, 2, 3, 20]
+print(my_fun(30))  # [1, 2, 3, 30]
+
+def my_fun(param, data=None):
+    # data = data or [1, 2, 3]
+    # albo
+    if not data:
+        data = [1, 2, 3]
+
+    data.append(param)
+    return data
+
+print(my_fun(10, [10, 20, 30]))  # [1, 2, 3, 10]
+print(my_fun(20))  # [1, 2, 3, 20]
+print(my_fun(30))  # [1, 2, 3, 30]
+
+
+
+
+
+
+
+
