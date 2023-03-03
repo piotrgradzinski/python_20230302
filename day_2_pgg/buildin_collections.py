@@ -58,3 +58,23 @@ for p in products:
     categories[p['category_id']].append(p)
 
 print(categories)
+
+for category_id, pic in categories.items():
+    print(category_id, pic)
+
+"""
+{
+    "product_id": 1, 
+    "product_name": "G.Skill Ripjaws V Series", 
+    "description": "Speed:DDR4-3000,Type:288-pin DIMM,CAS:15,Module:8x8GB,Size:64GB", 
+    "standard_cost": 450.36, 
+    "list_price": 640.99, 
+    "category_id": 5
+},
+"""
+
+from collections import namedtuple
+
+Product = namedtuple('Product', ['product_id', 'product_name', 'description', 'standard_cost', 'list_price', 'category_id'])
+
+
