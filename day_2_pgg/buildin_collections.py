@@ -17,3 +17,14 @@ print(my_list)
 my_list.sort(key=cmp_to_key(komparator))
 print(my_list)
 
+print('-' * 30)
+
+my_list = ['user-5', 'user-2', 'user-10', 'user-1']
+
+print(my_list)
+my_list.sort()
+print(my_list)
+
+from natsort import natsorted
+print(natsorted(my_list))
+
