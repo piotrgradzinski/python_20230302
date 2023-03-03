@@ -79,8 +79,30 @@ print(square(2))
 
 # map - mapowanie wartosci
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+mapped_numbers = map(lambda x: x * 10, numbers)
+print(mapped_numbers)
+for number in mapped_numbers:
+    print(number)
 
+mapped_numbers = map(lambda x: x * 10, numbers)
+print(list(mapped_numbers))
 
+numbers = [1, 2, 3]
+names = ['Ala', 'Ela', 'Ola']  # map zatrzymuje się przy najkrótszym kontenerze
 
+mapped = map(lambda number, name: f"{name}{number}", numbers, names)
+print(list(mapped))
 
+# wielkosc kolekcji musi się zgadzać z liczbą zmiennych, na które je przypisuje
+first_name, last_name = ['Piotr', 'GG']
+print(first_name, last_name)
 
+# filter
+filtered_number = filter(lambda x: x > 4, numbers)
+print(list(filtered_number))
+
+# zip
+numbers = [1, 2, 3]
+names = ['Ala', 'Ela', 'Ola']
+
+print(list(zip(numbers, names)))
