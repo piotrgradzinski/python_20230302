@@ -1,3 +1,4 @@
+
 from pprint import pprint
 
 my_list = ['ala', 'ola', 'ela']
@@ -126,3 +127,16 @@ Nad wodą = True / False?
 """
 above_water = all(map(lambda p: p['standard_cost'] < p['list_price'], products))
 print(above_water)
+
+
+# filterfalse
+from itertools import filterfalse
+filtered_products = filterfalse(lambda p: p['category_id'] == 1, products)
+pprint(list(filtered_products))
+
+# group by
+# pogrupujmy po kategorii
+from itertools import groupby
+
+for category_id, products_in_category in groupby(products, lambda p: p['category_id']):
+    print(category_id, len(list(products_in_category)))
