@@ -140,3 +140,36 @@ from itertools import groupby
 
 for category_id, products_in_category in groupby(products, lambda p: p['category_id']):
     print(category_id, len(list(products_in_category)))
+
+print('-' * 30)
+
+# .sort - metoda specyficzna dla listy
+products.sort(key=lambda p: p['category_id'])
+
+for category_id, products_in_category in groupby(products, lambda p: p['category_id']):
+    print(category_id, len(list(products_in_category)))
+
+print('-' * 30)
+
+# przyjmuje jakikolwiek iterable, zwraca zawsze listę
+print(sorted({4, -10, 7, 8, 10, 5}))
+
+
+# textwrap - https://docs.python.org/3/library/textwrap.html
+sentence = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed vehicula eros. Cras luctus libero ut dolor consectetur, a auctor odio lobortis. Aliquam erat volutpat. Pellentesque at fermentum velit, sollicitudin ornare magna. Proin dolor sem, commodo consequat tellus ut, venenatis malesuada est. Morbi a magna iaculis, convallis risus sit amet, vestibulum arcu. Nunc et arcu mollis dui suscipit rutrum. Morbi felis lacus, consequat quis libero a, vehicula scelerisque ex. Vestibulum finibus ac ligula in faucibus. Maecenas condimentum turpis urna, quis varius dolor sagittis in."
+sentence = "Lorem ipsum"
+
+from textwrap import shorten
+print(shorten(sentence, width=30, placeholder='...'))
+
+print('-' * 30)
+
+"""
+Moduł random i sampling
+https://note.nkmk.me/en/python-random-choice-sample-choices/
+"""
+
+import random
+print(random.choice(products))
+
+pprint(random.sample(products, 3))
