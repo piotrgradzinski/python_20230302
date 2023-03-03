@@ -106,3 +106,23 @@ numbers = [1, 2, 3]
 names = ['Ala', 'Ela', 'Ola']
 
 print(list(zip(numbers, names)))
+
+print('-' * 30)
+
+# all, any
+my_list = ['Ala', None, False, 0]
+print(all(my_list))  # False
+print(any(my_list))  # True
+
+print('-' * 30)
+
+from data.products import products
+
+"""
+Chciałbym sprawdzić czy we wszystkich produktach,
+standard_cost jest mniejszy niż list_price, czyli, 
+czy sprzedaję drożej niż kupuję.
+Nad wodą = True / False?
+"""
+above_water = all(map(lambda p: p['standard_cost'] < p['list_price'], products))
+print(above_water)
