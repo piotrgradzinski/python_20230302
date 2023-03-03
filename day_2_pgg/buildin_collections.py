@@ -62,6 +62,8 @@ print(categories)
 for category_id, pic in categories.items():
     print(category_id, pic)
 
+print('-' * 30)
+
 """
 {
     "product_id": 1, 
@@ -80,3 +82,24 @@ Product = namedtuple('Product', ['product_id', 'product_name', 'description', 's
 product_1 = Product(1, "G.Skill Ripjaws V Series", "Speed:DDR4-3000,Type:288-pin DIMM,CAS:15,Module:8x8GB,Size:64GB", 450.36, 640.99, 5)
 
 print(product_1)
+print(product_1.description)
+
+product_1 = Product(*products[0].values())
+print(product_1)
+print(product_1.description)
+
+print(products[0].keys())
+print(products[0].values())
+print(products[0].items())
+print(products[0].get('category_id', -1))  # nie znajdzie to odda None (domyślnie) albo drugi argument
+print(products[0]['category_id'])  # nie znajdzie to będzie KeyError
+
+print('-' * 30)
+
+from collections import Counter
+category_ids = [p['category_id'] for p in products]
+print(category_ids)
+
+my_counter = Counter(category_ids)
+for value, counts in my_counter.items():
+    print(value, counts)
