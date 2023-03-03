@@ -28,3 +28,33 @@ print(my_list)
 from natsort import natsorted
 print(natsorted(my_list))
 
+print('-' * 30)
+
+# defaultdict
+"""
+Chcę wyciągnąć wszystkie produkty i stworzyć słownik
+o takiej strukturze:
+{
+    category_id: [product1, product2]  # lista produktów z tej kategorii
+}
+"""
+from data.products import products
+
+# wersja bez defaultdict
+categories = {}
+for p in products:
+    if p['category_id'] not in categories:
+        categories[p['category_id']] = []
+
+    categories[p['category_id']].append(p)
+
+print(categories)
+
+# wersja z defaultdict
+from collections import defaultdict
+
+categories = defaultdict(list)
+for p in products:
+    categories[p['category_id']].append(p)
+
+print(categories)
