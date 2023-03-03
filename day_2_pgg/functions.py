@@ -43,6 +43,43 @@ merged = [*first_list, *second_list]
 pprint(merged)
 
 
+def square(number):
+    return number ** 2
+
+
+print(square(4))
+
+my_square = square
+print(my_square(4))
+print(type(square), type(my_square))
+
+def square(number):
+    return number ** 4
+
+def square3(number):
+    return number ** 3
+
+square = square3
+print(square(3))
+
+print(my_square(3))
+
+
+def square(number):
+    return number ** 2
+
+
+print(square(2))
+
+# to samo, ale z wykorzystaniem funkcji lambda
+
+square = lambda number: number ** 2
+print(square(2))
+
+
+# map - mapowanie wartosci
+number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 
 
 
