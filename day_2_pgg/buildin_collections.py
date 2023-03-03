@@ -77,4 +77,6 @@ from collections import namedtuple
 
 Product = namedtuple('Product', ['product_id', 'product_name', 'description', 'standard_cost', 'list_price', 'category_id'])
 
+product_1 = Product(1, "G.Skill Ripjaws V Series", "Speed:DDR4-3000,Type:288-pin DIMM,CAS:15,Module:8x8GB,Size:64GB", 450.36, 640.99, 5)
 
+print(product_1)
