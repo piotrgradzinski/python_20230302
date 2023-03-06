@@ -22,6 +22,7 @@ class Product:
         self.description = description
         self.standard_cost = standard_cost
         self.list_price = list_price
+        self.params = Product.extract_params(self.description)
 
     def __str__(self):
         return f"{self.product_name}({self.product_id})"
@@ -57,6 +58,14 @@ class Product:
         else:
             # return id(self) == id(other)
             return False
+
+    @staticmethod
+    def extract_params(data: str):
+        params = {}
+        for param_pair in data.split(','):
+            name, value = param_pair.split(':')
+            params[name] = value
+        return params
 
 
 # p = Product(product_id=1, product_name="G.Skill Ripjaws V Series", description="Speed:DDR4-3000", standard_cost=450.36, list_price=640.99, category_id=5)
