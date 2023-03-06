@@ -49,11 +49,29 @@ class Product:
         # return self.standard_cost * (1.0 + Product.MARGIN_BASIC_RATE) <= self.list_price
         return self.standard_cost * (1.0 + self.MARGIN_BASIC_RATE) <= self.list_price
 
+    def __eq__(self, other):
+        if isinstance(other, Product):
+            return self.product_id == other.product_id
+        elif isinstance(other, int):
+            return self.product_id == other
+        else:
+            # return id(self) == id(other)
+            return False
 
-p = Product(product_id=1, product_name="G.Skill Ripjaws V Series", description="Speed:DDR4-3000", standard_cost=450.36, list_price=640.99, category_id=5)
-print(p)
 
-p = Product.create_from_dict(products[1])
+# p = Product(product_id=1, product_name="G.Skill Ripjaws V Series", description="Speed:DDR4-3000", standard_cost=450.36, list_price=640.99, category_id=5)
+# print(p)
+
+p = Product.create_from_dict(products[0])
+
+p1 = Product.create_from_dict(products[1])
+p2 = Product.create_from_dict(products[1])
+print(p1, p2)
+print(type(p1), type(p2))
+print(id(p1), id(p2))
+print(p1 == p2)
+
+
 # print(p)
 # print(p.product_id, p.product_name, p.standard_cost)
 
@@ -116,14 +134,16 @@ class Order:
 
     def __delitem__(self, product_id):
         for oi in self._order_items:
-            if oi.product.product_id == product_id:
+            # if oi.product.product_id == product_id:
+            if oi.product == product_id:
                 self._order_items.remove(oi)
                 return
         raise ValueError('Product not found.')
 
     def add_product(self, product: Product, quantity: int):
         for oi in self._order_items:
-            if oi.product.product_id == product.product_id:
+            # if oi.product.product_id == product.product_id:
+            if oi.product == product:
                 oi.quantity += quantity
                 return
 
