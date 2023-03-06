@@ -48,3 +48,23 @@ pprint(osoba1)
 
 # skopiowane z tego, co wyświetliło __repr__
 osoba3 = Person(first_name="Jan", last_name="Kowalski")
+
+print('-' * 30)
+
+
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def get_area(self):
+        return self.width * self.height
+
+    @property
+    def area(self):
+        return self.width * self.height
+
+
+p = Rectangle(10, 20)
+print(p.get_area())
+print(p.area)

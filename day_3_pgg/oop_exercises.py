@@ -29,13 +29,26 @@ class Product:
         # return Product(**data)
         return cls(**data)
 
+    @property
+    def margin(self):
+        return self.list_price - self.standard_cost
+
+    @margin.setter
+    def margin(self, value):
+        self.list_price = self.standard_cost + value
+
+
 
 p = Product(product_id=1, product_name="G.Skill Ripjaws V Series", description="Speed:DDR4-3000", standard_cost=450.36, list_price=640.99, category_id=5)
 print(p)
 
 p = Product.create_from_dict(products[1])
-print(p)
-print(p.product_id, p.product_name, p.standard_cost)
+# print(p)
+# print(p.product_id, p.product_name, p.standard_cost)
 
 products_oop = [Product.create_from_dict(p) for p in products]
-pprint(products_oop)
+# pprint(products_oop)
+
+print(p.standard_cost, p.list_price, p.margin)
+p.margin = 600
+print(p.standard_cost, p.list_price, p.margin)
