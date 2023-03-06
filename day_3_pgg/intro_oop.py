@@ -38,8 +38,8 @@ class Person:
 osoba1 = Person('Jan', 'Kowalski')
 osoba1.describe('Hey')
 
-osoba2 = Person('Ala', 'Nowak')
-osoba2.describe()
+# osoba2 = Person('Ala', 'Nowak')
+# osoba2.describe()
 
 # konwersja z obiektu na str
 print(osoba1)
@@ -116,9 +116,35 @@ print(p)
 print(p.product_id, p.product_name, p.list_price, p.margin)
 
 
+from data.products import products
 
+p = Product(**products[0])
+print(p)
 
+# konwersja z dataclass do słownika/tupli
+import dataclasses
+print(dataclasses.asdict(p))
+print(dataclasses.astuple(p))
 
+print('-' * 30)
 
+# Ten moduł umożliwia nam jeszcze dynamiczne tworze klas
+pprint([(f_name, type(f_value)) for f_name, f_value in products[0].items()])
+Product = dataclasses.make_dataclass('Product', [(f_name, type(f_value)) for f_name, f_value in products[0].items()])
 
+pola = [('product_id', int),
+ ('product_name', str),
+ ('description', str),
+ ('standard_cost', float),
+ ('list_price', float),
+ ('category_id', int)]
+
+Product = dataclasses.make_dataclass('Product', pola)
+
+p = Product(**products[0])
+print(p)
+
+print('-' * 30)
+
+pprint(dataclasses.fields(Product))
 
