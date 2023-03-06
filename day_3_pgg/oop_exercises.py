@@ -10,6 +10,8 @@ from data.products import products
 
 
 class Product:
+    MARGIN_BASIC_RATE = 0.1  # 10%
+
     def __init__(self, product_id, category_id, product_name, description, standard_cost, list_price):
         self.product_id = product_id
         self.category_id = category_id
@@ -37,6 +39,10 @@ class Product:
     def margin(self, value):
         self.list_price = self.standard_cost + value
 
+    @property
+    def has_basic_margin(self) -> bool:
+        # return self.standard_cost * (1.0 + Product.MARGIN_BASIC_RATE) <= self.list_price
+        return self.standard_cost * (1.0 + self.MARGIN_BASIC_RATE) <= self.list_price
 
 
 p = Product(product_id=1, product_name="G.Skill Ripjaws V Series", description="Speed:DDR4-3000", standard_cost=450.36, list_price=640.99, category_id=5)
@@ -49,6 +55,6 @@ p = Product.create_from_dict(products[1])
 products_oop = [Product.create_from_dict(p) for p in products]
 # pprint(products_oop)
 
-print(p.standard_cost, p.list_price, p.margin)
-p.margin = 600
-print(p.standard_cost, p.list_price, p.margin)
+print(p.standard_cost, p.list_price, p.margin, p.has_basic_margin)
+p.margin = 100
+print(p.standard_cost, p.list_price, p.margin, p.has_basic_margin)
