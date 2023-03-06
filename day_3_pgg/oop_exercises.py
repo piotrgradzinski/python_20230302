@@ -19,5 +19,15 @@ class Product:
     def __str__(self):
         return f"{self.product_name}({self.product_id})"
 
+    @classmethod
+    def create_from_dict(cls, data: dict):
+        # return Product(**data)
+        return cls(**data)
+
+
 p = Product(product_id=1, product_name="G.Skill Ripjaws V Series", description="Speed:DDR4-3000", standard_cost=450.36, list_price=640.99, category_id=5)
 print(p)
+
+p = Product.create_from_dict(products[1])
+print(p)
+print(p.product_id, p.product_name, p.standard_cost)
