@@ -87,6 +87,10 @@ class OrderItem:
     product: Product
     quantity: int = 1
 
+    @property
+    def price(self):
+        return self.product.list_price * self.quantity
+
 
 class Order:
     def __init__(self, order_items: list[OrderItem] = None):
@@ -125,6 +129,17 @@ class Order:
 
         self._order_items.append(OrderItem(product=product, quantity=quantity))
 
+    @property
+    def total_price(self):
+        return sum(map(lambda oi: oi.price, self._order_items))
+
+    def __str__(self):
+        out = ['Products:']
+        for oi in self._order_items:
+            out.append(f'\t{oi.product.product_name} x {oi.quantity} = {oi.price:.2f}')
+        out.append(f'Total: {self.total_price:.2f}')
+        return '\n'.join(out)
+
 my_order_items = [
     OrderItem(product=Product.create_from_dict(products[0]), quantity=10),
     OrderItem(product=Product.create_from_dict(products[1]), quantity=20),
@@ -153,3 +168,5 @@ my_order.add_product(product=products_oop[0], quantity=10)
 my_order.add_product(product=products_oop[1], quantity=30)
 
 print(my_order._order_items)
+print(my_order.total_price)
+print(my_order)
