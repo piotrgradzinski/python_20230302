@@ -31,3 +31,6 @@ print(p)
 p = Product.create_from_dict(products[1])
 print(p)
 print(p.product_id, p.product_name, p.standard_cost)
+
+products_oop = [Product.create_from_dict(p) for p in products]
+print(products_oop)
