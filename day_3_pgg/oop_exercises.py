@@ -92,6 +92,23 @@ class Order:
     def __init__(self, order_items: list[OrderItem] = None):
         self._order_items: list[OrderItem] = order_items or []
 
+    def __getitem__(self, product_id) -> int:
+        # zwraca OrderItem po kluczu z listy self._order_items
+        # return self._order_items[item]
+        # wyszukać OrderItem taki, którego product_id == item
+        for oi in self._order_items:
+            if oi.product.product_id == product_id:
+                return oi.quantity
+
+        raise KeyError('Product %s not found', product_id)
+
+    def __setitem__(self, product_id: int, quantity: int):
+        for oi in self._order_items:
+            if oi.product.product_id == product_id:
+                oi.quantity = quantity
+                return
+
+        raise KeyError('Product not found')
 
 my_order_items = [
     OrderItem(product=Product.create_from_dict(products[0]), quantity=10),
@@ -99,9 +116,17 @@ my_order_items = [
 ]
 
 my_order = Order(order_items=my_order_items)
-print(my_order._order_items)
+print(my_order[1])  # my_order[product_id] -> quantity
+try:
+    print(my_order[5])
+except KeyError as e:
+    print(e)
 
+print(my_order[1])
+my_order[1] = 100
+print(my_order[1])
 
-
-
-
+try:
+    my_order[5] = 500
+except KeyError as e:
+    print(e)
