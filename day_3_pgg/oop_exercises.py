@@ -8,6 +8,9 @@ from pprint import pprint
 
 from data.products import products
 
+class MarginError(ValueError):
+    pass
+
 
 class Product:
     MARGIN_BASIC_RATE = 0.1  # 10%
@@ -38,7 +41,7 @@ class Product:
     @margin.setter
     def margin(self, value):
         if self.standard_cost * (1.0 + self.MARGIN_BASIC_RATE) > self.standard_cost + value:
-            raise ValueError('Minimum margin not met.')
+            raise MarginError('Minimum margin not met.')
         self.list_price = self.standard_cost + value
 
     @property
@@ -57,6 +60,18 @@ p = Product.create_from_dict(products[1])
 products_oop = [Product.create_from_dict(p) for p in products]
 # pprint(products_oop)
 
-print(p.standard_cost, p.list_price, p.margin, p.has_basic_margin)
-p.margin = 600
-print(p.standard_cost, p.list_price, p.margin, p.has_basic_margin)
+try:
+    print(p.standard_cost, p.list_price, p.margin, p.has_basic_margin)
+    p.margin = 10
+    print(p.standard_cost, p.list_price, p.margin, p.has_basic_margin)
+# except Exception as e:
+# except ValueError as e:
+except MarginError as e:
+    print('Unable to set margin:', e)
+else:
+    # uruchamiany jeśli nie było wyjątku
+    print('Nie było wyjątku...')
+finally:
+    print('finally uruchomi się zawsze ')
+
+print('Ala ma kota')

@@ -68,3 +68,26 @@ class Rectangle:
 p = Rectangle(10, 20)
 print(p.get_area())
 print(p.area)
+
+print('-' * 30)
+
+"""
+Wyjątki
+https://docs.python.org/3/library/exceptions.html
+BaseException
+    Exception
+        LookupError
+            IndexError
+            KeyError
+"""
+try:
+    # my_list = [1, 2, 3]
+    # my_list[100]
+    my_dict = {'a': 100}
+    my_dict['trololo']
+except IndexError as e:
+    print('IndexError', type(e))
+except LookupError as e:
+    print('LookupError', type(e))
+except Exception as e:
+    print('Exception', type(e))
