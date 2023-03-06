@@ -75,3 +75,33 @@ finally:
     print('finally uruchomi się zawsze ')
 
 print('Ala ma kota')
+
+print('-' * 30)
+
+
+from dataclasses import dataclass
+
+
+@dataclass
+class OrderItem:
+    product: Product
+    quantity: int = 1
+
+
+class Order:
+    def __init__(self, order_items: list[OrderItem] = None):
+        self._order_items: list[OrderItem] = order_items or []
+
+
+my_order_items = [
+    OrderItem(product=Product.create_from_dict(products[0]), quantity=10),
+    OrderItem(product=Product.create_from_dict(products[1]), quantity=20),
+]
+
+my_order = Order(order_items=my_order_items)
+print(my_order._order_items)
+
+
+
+
+
