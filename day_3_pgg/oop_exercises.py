@@ -4,6 +4,8 @@
 Na podstawie produktu z data/products.py
 stwórz klasę reprezentującą ten produkt.
 """
+from pprint import pprint
+
 from data.products import products
 
 
@@ -19,6 +21,9 @@ class Product:
     def __str__(self):
         return f"{self.product_name}({self.product_id})"
 
+    def __repr__(self):
+        return f"<Product({', '.join(['%s=%r' % (k, v) for k, v in self.__dict__.items()])})>"
+
     @classmethod
     def create_from_dict(cls, data: dict):
         # return Product(**data)
@@ -33,4 +38,4 @@ print(p)
 print(p.product_id, p.product_name, p.standard_cost)
 
 products_oop = [Product.create_from_dict(p) for p in products]
-print(products_oop)
+pprint(products_oop)
