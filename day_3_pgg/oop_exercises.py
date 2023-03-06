@@ -110,6 +110,21 @@ class Order:
 
         raise KeyError('Product not found')
 
+    def __delitem__(self, product_id):
+        for oi in self._order_items:
+            if oi.product.product_id == product_id:
+                self._order_items.remove(oi)
+                return
+        raise ValueError('Product not found.')
+
+    def add_product(self, product: Product, quantity: int):
+        for oi in self._order_items:
+            if oi.product.product_id == product.product_id:
+                oi.quantity += quantity
+                return
+
+        self._order_items.append(OrderItem(product=product, quantity=quantity))
+
 my_order_items = [
     OrderItem(product=Product.create_from_dict(products[0]), quantity=10),
     OrderItem(product=Product.create_from_dict(products[1]), quantity=20),
@@ -130,3 +145,11 @@ try:
     my_order[5] = 500
 except KeyError as e:
     print(e)
+
+del(my_order[1])
+print(my_order._order_items)
+
+my_order.add_product(product=products_oop[0], quantity=10)
+my_order.add_product(product=products_oop[1], quantity=30)
+
+print(my_order._order_items)
