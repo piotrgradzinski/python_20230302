@@ -91,3 +91,34 @@ except LookupError as e:
     print('LookupError', type(e))
 except Exception as e:
     print('Exception', type(e))
+
+print('-' * 30)
+
+from dataclasses import dataclass
+
+
+@dataclass
+class Product:
+    product_id: int
+    category_id: int
+    product_name: str
+    description: str
+    standard_cost: float
+    list_price: float = 0.0  # wartości domyślne
+
+    @property
+    def margin(self):
+        return self.list_price - self.standard_cost
+
+
+p = Product(product_id=1, category_id=2, product_name='Serwer', description='Opis', standard_cost=100.0, list_price=200.0)
+print(p)
+print(p.product_id, p.product_name, p.list_price, p.margin)
+
+
+
+
+
+
+
+
