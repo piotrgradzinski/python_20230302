@@ -23,3 +23,14 @@ class Fish(Animal):
     def emit_sound(self):
         raise NotImplemented()
 
+animal = Animal('Cos')
+animal.say_hello()
+
+dog = Dog('Burek')
+dog.emit_sound()
+
+cat = Cat('Mruczek')
+cat.emit_sound()
+
+fish = Fish('Nemo')
+fish.emit_sound()
