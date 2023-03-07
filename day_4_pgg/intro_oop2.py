@@ -23,8 +23,8 @@ class Fish(Animal):
     def emit_sound(self):
         raise NotImplemented()
 
-animal = Animal('Cos')
-animal.say_hello()
+# animal = Animal('Cos')
+# animal.say_hello()
 
 dog = Dog('Burek')
 dog.emit_sound()
@@ -34,3 +34,11 @@ cat.emit_sound()
 
 fish = Fish('Nemo')
 fish.emit_sound()
+
+
+
+"""
+Enum
+dla Pythona < 3.11
+pip install StrEnum
+"""
