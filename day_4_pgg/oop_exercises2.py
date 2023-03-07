@@ -152,8 +152,8 @@ class Order:
         return f'Total: {self.total_price:.2f}'
 
 class OrderWithDiscount(Order):
-    def __init__(self, order_items: list[OrderItem] = None, discount: float = 0.5):
-        super().__init__(order_items)
+    def __init__(self, order_items: list[OrderItem] = None, discount: float = 0.5, status: OrderStatus = OrderStatus.NEW):
+        super().__init__(order_items, status)
         self.discount = discount
 
     @property
@@ -190,9 +190,10 @@ print(my_order)
 
 print('-' * 30)
 
-my_order_wd = OrderWithDiscount(order_items=my_order_items, discount=0.5)
+my_order_wd = OrderWithDiscount(order_items=my_order_items, discount=0.5, status=OrderStatus.ACTIVE)
 print(my_order_wd)
-
+print(my_order_wd.status)
+print(OrderStatus(10), type(OrderStatus(10)))
 
 
 
