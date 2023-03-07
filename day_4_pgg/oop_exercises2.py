@@ -62,6 +62,7 @@ class Product:
             params[name] = value
         return params
 
+products_oop = [Product.create_from_dict(p) for p in products]
 
 @dataclass
 class OrderItem:
@@ -71,6 +72,14 @@ class OrderItem:
     @property
     def price(self):
         return self.product.list_price * self.quantity
+
+@dataclass
+class OrderItemWithDiscount(OrderItem):
+    discount: float = 0.1
+
+    @property
+    def price(self):
+        return super().price * (1.0 - self.discount)
 
 
 class Order:
@@ -118,8 +127,6 @@ class Order:
         out.append(f'Total: {self.total_price:.2f}')
         return '\n'.join(out)
 
-
-products_oop = [Product.create_from_dict(p) for p in products]
 
 my_order_items = [
     OrderItem(product=Product.create_from_dict(products[0]), quantity=10),
