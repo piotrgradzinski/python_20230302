@@ -73,6 +73,9 @@ class OrderItem:
     def price(self):
         return round(self.product.list_price * self.quantity, 2)
 
+    def __str__(self):
+        return f'{self.product.product_name} x {self.quantity} = {self.price:.2f}'
+
 @dataclass
 class OrderItemWithDiscount(OrderItem):
     discount: float = 0.1
@@ -80,6 +83,9 @@ class OrderItemWithDiscount(OrderItem):
     @property
     def price(self):
         return round(super().price * (1.0 - self.discount), 2)
+
+    def __str__(self):
+        return f'{super().__str__()} ({self.discount * 100}% discount)'
 
 
 class Order:
@@ -123,7 +129,7 @@ class Order:
     def __str__(self):
         out = ['Products:']
         for oi in self._order_items:
-            out.append(f'\t{oi.product.product_name} x {oi.quantity} = {oi.price:.2f}')
+            out.append(str(oi))
         out.append(f'Total: {self.total_price:.2f}')
         return '\n'.join(out)
 
@@ -136,6 +142,9 @@ class OrderWithDiscount(Order):
     @property
     def total_price(self):
         return super().total_price * (1.0 - self.discount)
+
+    def __str__(self):
+        return f'Discount {self.discount * 100}%\n{super().__str__()}'
 
 
 my_order_items = [
