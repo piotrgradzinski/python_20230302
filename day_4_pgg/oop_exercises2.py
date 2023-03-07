@@ -127,12 +127,24 @@ class Order:
         return sum(map(lambda oi: oi.price, self._order_items))
 
     def __str__(self):
-        out = ['Products:']
-        for oi in self._order_items:
-            out.append(str(oi))
-        out.append(f'Total: {self.total_price:.2f}')
+        out = []
+        out.append(self._str_header())
+        out.append(self._str_order_item_summary())
+        out.append(self._str_footer())
         return '\n'.join(out)
 
+    def _str_header(self):
+
+        return 'Order'
+
+    def _str_order_item_summary(self):
+        out = ['Products']
+        for oi in self._order_items:
+            out.append(f'\t{str(oi)}')
+        return '\n'.join(out)
+
+    def _str_footer(self):
+        return f'Total: {self.total_price:.2f}'
 
 class OrderWithDiscount(Order):
     def __init__(self, order_items: list[OrderItem] = None, discount: float = 0.5):
@@ -143,8 +155,14 @@ class OrderWithDiscount(Order):
     def total_price(self):
         return super().total_price * (1.0 - self.discount)
 
-    def __str__(self):
-        return f'Discount {self.discount * 100}%\n{super().__str__()}'
+    # def __str__(self):
+    #     return f'Discount {self.discount * 100}%\n{super().__str__()}'
+
+    def _str_header(self):
+        return f'Order with discount {self.discount * 100}%'
+
+    def _str_footer(self):
+        return f'{super()._str_footer()} (with {self.discount * 100}% discount)'
 
 
 my_order_items = [
@@ -160,6 +178,9 @@ my_order.add_product(product=products_oop[1], quantity=30)
 
 pprint(my_order._order_items)
 print(my_order.total_price)
+
+print('-' * 30)
+
 print(my_order)
 
 print('-' * 30)
