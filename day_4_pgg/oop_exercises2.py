@@ -71,7 +71,7 @@ class OrderItem:
 
     @property
     def price(self):
-        return self.product.list_price * self.quantity
+        return round(self.product.list_price * self.quantity, 2)
 
 @dataclass
 class OrderItemWithDiscount(OrderItem):
@@ -79,7 +79,7 @@ class OrderItemWithDiscount(OrderItem):
 
     @property
     def price(self):
-        return super().price * (1.0 - self.discount)
+        return round(super().price * (1.0 - self.discount), 2)
 
 
 class Order:
@@ -128,9 +128,20 @@ class Order:
         return '\n'.join(out)
 
 
+class OrderWithDiscount(Order):
+    def __init__(self, order_items: list[OrderItem] = None, discount: float = 0.5):
+        super().__init__(order_items)
+        self.discount = discount
+
+    @property
+    def total_price(self):
+        return super().total_price * (1.0 - self.discount)
+
+
 my_order_items = [
-    OrderItem(product=Product.create_from_dict(products[0]), quantity=10),
-    OrderItem(product=Product.create_from_dict(products[1]), quantity=20),
+    OrderItem(product=Product.create_from_dict(products[0]), quantity=1),
+    OrderItem(product=Product.create_from_dict(products[1]), quantity=1),
+    OrderItemWithDiscount(product=products_oop[2], quantity=1, discount=0.5)
 ]
 
 my_order = Order(order_items=my_order_items)
@@ -138,14 +149,14 @@ my_order = Order(order_items=my_order_items)
 my_order.add_product(product=products_oop[0], quantity=10)
 my_order.add_product(product=products_oop[1], quantity=30)
 
-print(my_order._order_items)
+pprint(my_order._order_items)
 print(my_order.total_price)
 print(my_order)
 
 print('-' * 30)
 
-
-
+my_order_wd = OrderWithDiscount(order_items=my_order_items, discount=0.5)
+print(my_order_wd)
 
 
 
