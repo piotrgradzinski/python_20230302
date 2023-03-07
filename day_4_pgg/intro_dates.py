@@ -68,5 +68,20 @@ d = teraz + relativedelta(months=-1, day=31)
 print(d.isoformat())
 
 import dateutil.parser
-d = dateutil.parser.parse('12.09.2023')
+d = dateutil.parser.parse('12.09.2023', dayfirst=True)
+d = dateutil.parser.parse('12-09-2023')
 print(d.isoformat())
+
+print('-' * 30)
+
+from dateutil import rrule
+
+recurring_rule = rrule.rrule(
+    rrule.WEEKLY,
+    byweekday=[rrule.MO, rrule.WE],
+    dtstart=datetime.datetime(year=2023, month=1, day=1),
+    until=datetime.datetime(year=2023, month=12, day=1),
+)
+
+for rule in recurring_rule:
+    print(rule)
