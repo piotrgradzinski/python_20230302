@@ -13,6 +13,8 @@ print(next(list_iterator))  # 2
 print(next(list_iterator))  # 3
 # print(next(list_iterator))  # StopIteration
 
+print('-' * 30)
+
 from collections.abc import Iterable, Iterator
 class Counter(Iterable):
     def __init__(self, how_many, start):

@@ -92,10 +92,14 @@ class OrderStatus(IntEnum):
     ACTIVE = 10
     CLOSED = 20
 
-class Order:
+from collections.abc import Iterable
+class Order(Iterable):
     def __init__(self, order_items: list[OrderItem] = None, status: OrderStatus = OrderStatus.NEW):
         self._order_items: list[OrderItem] = order_items or []
         self.status = status
+
+    def __iter__(self):
+        return iter(self._order_items)
 
     def __getitem__(self, product_id) -> int:
         for oi in self._order_items:
