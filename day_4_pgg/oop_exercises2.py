@@ -2,6 +2,8 @@
 from enum import IntEnum
 from pprint import pprint
 from dataclasses import dataclass
+from typing import Iterator
+
 from data.products import products
 
 
@@ -92,14 +94,31 @@ class OrderStatus(IntEnum):
     ACTIVE = 10
     CLOSED = 20
 
-from collections.abc import Iterable
-class Order(Iterable):
+from collections.abc import Iterable, Collection
+# class Order(Iterable):
+class Order(Collection):
     def __init__(self, order_items: list[OrderItem] = None, status: OrderStatus = OrderStatus.NEW):
         self._order_items: list[OrderItem] = order_items or []
         self.status = status
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[OrderItem]:
         return iter(self._order_items)
+
+    def __len__(self):
+        return len(self._order_items)
+
+    def __contains__(self, item):
+        # item: OrderItem, Product, int
+        if isinstance(item, Product):
+            product_id = item.product_id
+        elif isinstance(item, OrderItem):
+            product_id = item.product.product_id
+        elif isinstance(item, int):
+            product_id = item
+        else:
+            return False
+
+        return product_id in [oi.product.product_id for oi in self._order_items]
 
     def __getitem__(self, product_id) -> int:
         for oi in self._order_items:
@@ -199,5 +218,20 @@ print(my_order_wd)
 print(my_order_wd.status)
 print(OrderStatus(10), type(OrderStatus(10)))
 
+print('-' * 30)
 
+for oi in my_order_wd:
+    print(oi.product.product_name, oi.quantity)
 
+print(list(my_order_wd))
+
+print(sum([oi.price for oi in my_order_wd]))
+
+print('-' * 30)
+
+print(1 in my_order_wd)
+print(10 in my_order_wd)
+print(products_oop[0] in my_order_wd)
+print(products_oop[20] in my_order_wd)
+
+print(len(my_order_wd))
