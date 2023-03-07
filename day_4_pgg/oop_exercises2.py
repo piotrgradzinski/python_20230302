@@ -1,5 +1,5 @@
 # oop_exercises
-
+from enum import IntEnum
 from pprint import pprint
 from dataclasses import dataclass
 from data.products import products
@@ -87,10 +87,15 @@ class OrderItemWithDiscount(OrderItem):
     def __str__(self):
         return f'{super().__str__()} ({self.discount * 100}% discount)'
 
+class OrderStatus(IntEnum):
+    NEW = 0
+    ACTIVE = 10
+    CLOSED = 20
 
 class Order:
-    def __init__(self, order_items: list[OrderItem] = None):
+    def __init__(self, order_items: list[OrderItem] = None, status: OrderStatus = OrderStatus.NEW):
         self._order_items: list[OrderItem] = order_items or []
+        self.status = status
 
     def __getitem__(self, product_id) -> int:
         for oi in self._order_items:
