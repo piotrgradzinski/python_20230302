@@ -1,5 +1,6 @@
 # ABC - Abstract Base Class
 from abc import ABC, abstractmethod
+
 class Animal(ABC):
     def __init__(self, name):
         self.name = name
@@ -33,7 +34,7 @@ cat = Cat('Mruczek')
 cat.emit_sound()
 
 fish = Fish('Nemo')
-fish.emit_sound()
+# fish.emit_sound()
 
 
 
@@ -42,3 +43,23 @@ Enum
 dla Pythona < 3.11
 pip install StrEnum
 """
+
+# < 3.11
+from strenum import StrEnum
+
+# >= 3.11
+# from enum import StrEnum
+class Services(StrEnum):
+    ORACLE = 'oracle'
+    JUPYTER = 'jupyter'
+
+
+
+print(Services.JUPYTER)
+
+
+
+
+
+
+
