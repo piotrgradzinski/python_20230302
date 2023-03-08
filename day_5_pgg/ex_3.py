@@ -6,4 +6,22 @@ Wczytać plik emails.txt i odfiltrować poprawne mejle:
 - odflitrować tylko (w miarę) poprawne adresy email
 - wynik zapisać do pliku
 """
+import re
 
+emails = set()
+with open('emails.txt') as file:
+    for line in file:
+        if line.count('@') != 1:
+            continue
+
+        address = line.strip().lower()
+        # usunięcie spacji
+        # address = address.replace(' ', '')
+
+        # usunięcie białych znaków
+        address = re.sub(r'\s+', '', address)
+        if re.match(r'[\w-]+@[\w_]+\.[\w_]+', address):
+            emails.add(address)
+
+with open('emails_cleaned.txt', 'w') as output_file:
+    output_file.write('\n'.join(emails))
