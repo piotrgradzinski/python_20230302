@@ -1,0 +1,32 @@
+Prof. dr hab. Romuald A. Janik	D-2-41	janik [at] th.if.uj.edu.pl	+48 12 664 4824
+Prof. dr hab. Maciej A. Nowak (head)	D-2-39	nowak [at] th.if.uj.edu.pl	+48 12 664 4678
+Dr hab. Jakub Gizbert-Studnicki	D-2-35	jakub.gizbert-studnicki [at] uj.edu.pl	+48 12 664 4788
+Dr hab. Andrzej Görlich	D-2-20	andrzej.goerlich [at] uj.edu.pl	+48 12 664 4835
+Dr hab. Jakub Mielczarek	D-2-37	jakub.mielczarek [at] uj.edu.pl	+48 12 664 4789
+Dr hab. Paweł Oświęcimka	D-2-30	pawel.oswiecimka [at] uj.edu.pl	+48 12 664 4655
+Dr Shingo Akama	D-2-15a	shingo.akama [at] uj.edu.pl	+48 12 664 4563
+Dr Zbigniew Drogosz	D-2-24	zbigniew.drogosz [at] student.uj.edu.pl
+Dr Mario Flory	D-2-18	mflory [at] th.if.uj.edu.pl	+48 12 664 4660
+Dr Alexander Ganz	D-2-15	alexander.ganz [at] uj.edu.pl	+48 12 664 4803
+Dr Jacek Grela	D-2-10	jacek.grela [at] uj.edu.pl	+48 12 664 4797
+Dr Jakub Janarek	D-2-42	jakub.janarek [at] uj.edu.pl	+48 12 664 4778
+Dr Helder Larraguivel Carrillo	D-2-22	helder.larraguivel [at] uj.edu.pl	+48 12 664 4724
+Dr Chunshan Lin	D-2-15	chunshan.lin [at] uj.edu.pl	+48 12 664 4803
+Dr Yizhuang Liu	C-2-07	yizhuang.liu [at] uj.edu.pl
+Dr Maciej Majka	D-2-38	maciej.majka [at] uj.edu.pl	+48 12 664 4782
+Dr Artur Miroszewski	D-2-24	artur.miroszewski [at] uj.edu.pl	+48 12 664
+Dr Jeremi Ochab	D-2-10	jeremi.ochab [at] uj.edu.pl	+48 12 664 4797
+Dr Marcus Reitz	D-2-08	marcus.reitz [at] uj.edu.pl	+48 12 664 4798
+Dr Hesam Soltanpanahi	B-2-11	hesam.soltanpanahi [at] uj.edu.pl	+48 12 664 4612
+Dr Wojciech Tomczyk		wojciech.tomczyk@uj.edu.pl	+48 12 664
+Dr Marcin Wątorek	D-2-24	marcin.watorek [at] uj.edu.pl
+Dr Lidiia Zadorozhna	D-2-15a	lidia.zadorozhna [at] uj.edu.pl	+48 12 664 4563
+Dr Marcin Zagórski	D-2-22	marcin.zagorski [at] uj.edu.pl	+48 12 664 4724
+Satyaki Chowdhury	D-2-07	satyaki.chowdhury [at] doctoral.uj.edu.pl	+48 12 664
+Grzegorz Czelusta	B-2-11	grzegorz.czelusta [at] doctoral.uj.edu.pl	+48 12 664 4612
+Paola C. M. Delgado	D-2-15a	paola.moreira.delgado [at] doctoral.uj.edu.pl	+48 12 664 4563
+Danilo Artigas Guimarey	D-2-24	d.artigas.guimarey [at] doctoral.uj.edu.pl
+Franciszek Humieja	D-2-06	franciszek.humieja [at] doctoral.uj.edu.pl	+48 12 664 4799
+Marta Lotka	D-2-40	marta.lotka [at] student.uj.edu.pl	+48 12 664 4833
+Michael Olesik	D-2-42	michael.olesik [at] doctoral.uj.edu.pl	+48 12 664 4778
+Damodar Rajbhandari	D-2-42	damodar.rajbhandari [at] student.uj.edu.pl	+48 12 6644778
