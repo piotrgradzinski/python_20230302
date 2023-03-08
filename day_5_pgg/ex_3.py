@@ -20,7 +20,7 @@ with open('emails.txt') as file:
 
         # usunięcie białych znaków
         address = re.sub(r'\s+', '', address)
-        if re.match(r'[\w-]+@[\w_]+\.[\w_]+', address):
+        if re.match(r'[\w-]+@[\w-]+\.[\w-]+', address):
             emails.add(address)
 
 with open('emails_cleaned.txt', 'w') as output_file:
